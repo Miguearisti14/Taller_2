@@ -2,9 +2,31 @@ const esbuild = require('esbuild');
 const fs = require('fs');
 const path = require('path');
 const { minify } = require('html-minifier-terser');
+const imagemin = require('imagemin').default;
+const imageminMozjpeg = require('imagemin-mozjpeg').default;
+const imageminPngquant = require('imagemin-pngquant').default;
+const imageminSvgo = require('imagemin-svgo').default;
 const { copy } = require('esbuild-plugin-copy');
+const { sassPlugin } = require('esbuild-sass-plugin');
 
-// Función para minificar HTML
+// Función para optimizar imágenes
+async function optimizeImages() {
+    try {
+        await imagemin(['src/assets/images/*.{jpg,png,gif,svg}'], {
+            destination: 'dist/assets/images',
+            plugins: [
+                imageminMozjpeg({ quality: 80 }),
+                imageminPngquant({ quality: [0.6, 0.8] }),
+                imageminSvgo({ plugins: [{ removeViewBox: false }] })
+            ]
+        });
+        console.log('Imágenes optimizadas y copiadas');
+    } catch (error) {
+        console.error('Error optimizando imágenes:', error);
+    }
+}
+
+// Función para minificar HTML
 async function minifyHTML(sourcePath, destinationPath) {
     try {
         const html = fs.readFileSync(sourcePath, 'utf8');
@@ -17,21 +39,21 @@ async function minifyHTML(sourcePath, destinationPath) {
             minifyJS: true
         });
         fs.writeFileSync(destinationPath, minifiedHtml, 'utf8');
-        console.log(`✅ Minificado: ${destinationPath}`);
+        console.log(`Minificado: ${destinationPath}`);
     } catch (error) {
-        console.error(`❌ Error minificando ${sourcePath}:`, error);
+        console.error(`Error minificando ${sourcePath}:`, error);
     }
 }
 
-// Ejecutar la minificación para cada HTML en src/
+// Minificar archivos HTML
 const htmlFiles = ['index.html', 'formulario.html'];
 htmlFiles.forEach(file => {
     minifyHTML(`src/${file}`, `dist/${file}`);
 });
 
-// Ejecutar el bundler de esbuild
+// Ejecutar esbuild con soporte para SASS
 esbuild.build({
-    entryPoints: ['src/scripts/main.js', 'src/styles/styles.css'],
+    entryPoints: ['src/scripts/main.js', 'src/styles/styles.sass'],
     bundle: true,
     minify: true,
     outdir: 'dist',
@@ -42,18 +64,21 @@ esbuild.build({
     loader: {
         '.png': 'file',
         '.jpg': 'file',
-        '.mp4': 'file'
+        '.gif': 'file',
+        '.svg': 'file'
     },
     define: { 'process.env.NODE_ENV': '"production"' },
     plugins: [
+        sassPlugin(),
         copy({
             resolveFrom: 'cwd',
             assets: {
-                from: ['./src/assets//*'],
+                from: ['./src/assets/**/*'],
                 to: ['./dist/assets']
             }
         })
     ]
 }).then(() => {
-    console.log('⚡ Build completo');
+    console.log('⚡ Build completo con soporte para SASS');
+    return optimizeImages();
 }).catch(() => process.exit(1));
