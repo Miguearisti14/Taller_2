@@ -49,7 +49,7 @@ async function minifyHTML(sourcePath, destinationPath) {
 
 // Ejecutar esbuild con soporte para SASS
 esbuild.build({
-    entryPoints: ['src/scripts/main.js', 'src/styles/styles.scss'],
+    entryPoints: ['src/scripts/main.js', 'src/styles/styles.scss', 'src/styles/dark.scss'],
     bundle: true,
     minify: true,
     outdir: 'dist',
