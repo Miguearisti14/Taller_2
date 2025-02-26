@@ -45,15 +45,11 @@ async function minifyHTML(sourcePath, destinationPath) {
     }
 }
 
-// Minificar archivos HTML
-const htmlFiles = ['index.html', 'formulario.html'];
-htmlFiles.forEach(file => {
-    minifyHTML(`src/${file}`, `dist/${file}`);
-});
+
 
 // Ejecutar esbuild con soporte para SASS
 esbuild.build({
-    entryPoints: ['src/scripts/main.js', 'src/styles/styles.sass'],
+    entryPoints: ['src/scripts/main.js', 'src/styles/styles.scss'],
     bundle: true,
     minify: true,
     outdir: 'dist',
@@ -80,5 +76,12 @@ esbuild.build({
     ]
 }).then(() => {
     console.log('⚡ Build completo con soporte para SASS');
+    // Minificar archivos HTML
+    const htmlFiles = ['index.html', 'formulario.html'];
+    htmlFiles.forEach(file => {
+        minifyHTML(`src/${file}`, `dist/${file}`);
+    });
     return optimizeImages();
+
+
 }).catch(() => process.exit(1));
