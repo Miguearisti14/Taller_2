@@ -34,10 +34,10 @@
 
         <nav>
             <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="#Destinos">Destinos</a></li>
-                <li><a href="#Experiencias">Experiencias</a></li>
-                <li><a href="formulario.html">Contacto</a></li>
+                <li><a href="index.html" data-i18n="home">Inicio</a></li>
+                <li><a href="#Destinos" data-i18n="destinations">Destinos</a></li>
+                <li><a href="#Experiencias" data-i18n="experiences">Experiencias</a></li>
+                <li><a href="formulario.html" data-i18n="contact">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -46,21 +46,25 @@
     <div class="megaContenedor">
         <div class="container">
             <div class="formulario">
-                <h1>Formulario de <br>Contacto</h1>
+                <h1 data-i18n="Formulario">Formulario de <br>Contacto</h1>
                 <form id="formulario">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre">
+                    <label for="nombre" data-i18n="Nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre"
+                        data-i18n-placeholder="CampoNombre">
 
-                    <label for="correo">Correo</label>
-                    <input type="email" id="correo" name="correo" placeholder="Ingrese su correo">
+                    <label for="correo" data-i18n="Correo">Correo</label>
+                    <input type="email" id="correo" name="correo" placeholder="Ingrese su correo"
+                        data-i18n-placeholder="CampoCorreo">
 
-                    <label for="asunto">Asunto</label>
-                    <input type="text" id="asunto" name="asunto" placeholder="Ingrese el asunto">
+                    <label for="asunto" data-i18n="Asunto">Asunto</label>
+                    <input type="text" id="asunto" name="asunto" placeholder="Ingrese el asunto"
+                        data-i18n-placeholder="CampoAsunto">
 
-                    <label for="mensaje">Mensaje</label>
-                    <textarea id="mensaje" name="mensaje" placeholder="Escriba su mensaje"></textarea>
+                    <label for="mensaje" data-i18n="Mensaje">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" placeholder="Escriba su mensaje"
+                        data-i18n-placeholder="CampoMensaje"></textarea>
 
-                    <button type="submit">Enviar Información</button>
+                    <button type="submit" data-i18n="Enviar">Enviar Información</button>
                 </form>
 
 
@@ -73,7 +77,7 @@
 
     <!-- Sección de sede -->
     <div class="sedes-container">
-        <h2>Nuestras Sedes</h2>
+        <h2 data-i18n="Sedes">Nuestras Sedes</h2>
         <div class="imagen-sede">
             <img src="assets\images\oficina.jpg" alt="Nuestras Sedes">
         </div>
@@ -83,11 +87,11 @@
                 <p>Find our offices around the world and feel free to pay us a visit!</p>
             </div>
             <div class="sede">
-                <h3>Medellín</h3>
+                <h3 data-i18n="Medellin">Medellín</h3>
                 <p>Frederiksberg<br>Nordhavn<br>Sychavn</p>
             </div>
             <div class="sede">
-                <h3>Córdoba</h3>
+                <h3 data-i18n="Cordoba">Córdoba</h3>
                 <p>Hackney Wick<br>Brixton<br>Elephant & Castle</p>
             </div>
         </div>
@@ -114,6 +118,8 @@
         <a href="https://www.canva.com/design/DAGefIFFRv8/49nGsAEYFhQE1WGXbM-7-w/view"><img
                 src="assets\images\logowpp.png" alt=""></a>
     </div>
+
+    <button id="toggleLanguage">🌎</button>
 
     <button id="toggleDarkMode">🌙</button>
 

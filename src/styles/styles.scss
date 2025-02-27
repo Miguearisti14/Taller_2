@@ -474,3 +474,25 @@ button {
         transform: scale(1.1);
     }
 }
+
+// BTN IDIOMA
+#toggleLanguage {
+    position: fixed;
+    bottom: 80px; // Un poco más arriba que el botón de Dark Mode
+    left: 20px;
+    background-color: #222;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s, transform 0.2s;
+    z-index: 1000;
+
+    &:hover {
+        background-color: #444;
+        transform: scale(1.1);
+    }
+}

@@ -25,6 +25,7 @@
     "imagemin-gifsicle": "^7.0.0",
     "imagemin-mozjpeg": "^10.0.0",
     "imagemin-pngquant": "^10.0.0",
-    "imagemin-svgo": "^11.0.1"
+    "imagemin-svgo": "^11.0.1",
+    "node-polyglot": "^2.6.0"
   }
 }
