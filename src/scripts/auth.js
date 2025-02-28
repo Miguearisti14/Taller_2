@@ -1,9 +1,7 @@
-// auth.js
-
 export function setupAuth() {
     const form = document.getElementById("formulario_login");
 
-    // Verificamos si estamos en la página de login
+
     if (document.getElementById("loginUsername")) {
         form.addEventListener("submit", (e) => {
             e.preventDefault();
@@ -15,13 +13,13 @@ export function setupAuth() {
             if (users[username] && users[username] === password) {
                 alert("Inicio de sesión exitoso");
                 localStorage.setItem("loggedInUser", username);
-                window.location.href = "index.html"; // Redirigir tras login
+                window.location.href = "index.html";
             } else {
                 alert("Usuario o contraseña incorrectos");
             }
         });
 
-        // Si estamos en la página de registro
+
     } else if (document.getElementById("registerUsername")) {
         form.addEventListener("submit", (e) => {
             e.preventDefault();
@@ -53,11 +51,10 @@ export function updateSessionUI() {
             document.getElementById("logoutBtn").addEventListener("click", (e) => {
                 e.preventDefault();
                 localStorage.removeItem("loggedInUser");
-                // Puedes redirigir o recargar la página para reflejar el cambio
                 location.reload();
             });
         } else {
-            loginBtnLi.innerHTML = `<a href="login.html">Iniciar sesión</a>`;
+            loginBtnLi.innerHTML = `<a href="login.html" data-i18n="IniciarSesion">Iniciar Sesión</a>`;
         }
     }
 }

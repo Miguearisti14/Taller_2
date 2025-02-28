@@ -1,5 +1,6 @@
 import Polyglot from "node-polyglot";
 
+// Traducciones
 const translations = {
     es: {
         home: "Inicio",
@@ -38,8 +39,6 @@ const translations = {
         CampoContraseña: "Ingrese su contraseña",
         CampoUsuario: "Ingrese su usuario",
         IniciarSesion: "Iniciar Sesión"
-
-
     },
     en: {
         home: "Home",
@@ -61,60 +60,64 @@ const translations = {
         Formulario: "Contact Form",
         Nombre: "Name",
         Correo: "Email",
-        Asunto: "Affair",
-        Mensaje: "Mesagge",
+        Asunto: "Subject",
+        Mensaje: "Message",
         Enviar: "Send Information",
         Sedes: "Our Headquarters",
         Medellin: "Medellin",
         Cordoba: "Cordoba",
         CampoNombre: "Enter your Name",
         CampoCorreo: "Enter your Email",
-        CampoAsunto: "Enter your Affair",
-        CampoMensaje: "Enter your message",
+        CampoAsunto: "Enter your Subject",
+        CampoMensaje: "Enter your Message",
         CerrarSesion: "Log out",
-        Registrarse: "Sign in",
+        Registrarse: "Sign up",
         Usuario: "User",
         Contraseña: "Password",
         CampoContraseña: "Enter your password",
-        CampoUsuario: "Enter your user",
+        CampoUsuario: "Enter your username",
         IniciarSesion: "Log in"
     }
 };
 
-// Obtener el idioma guardado o usar español por defecto
-let userLang = navigator.language.startsWith("es") ? "es" : "en"; // Idioma predeterminado
+// Detectar idioma inicial desde localStorage o navegador
+let userLang = localStorage.getItem("language") || (navigator.language.startsWith("es") ? "es" : "en");
+
+// Crear instancia de Polyglot con el idioma inicial
 const polyglot = new Polyglot({ phrases: translations[userLang], locale: userLang });
 
-// Se actualiza idioma y placeholders
+// Actualizar idioma y guardar en localStorage
 export function setUserLang(newLang) {
-    userLang = newLang;
-    updateLanguage(newLang);
-
+    if (translations[newLang]) {
+        userLang = newLang;
+        localStorage.setItem("language", newLang);
+        updateLanguage(newLang);
+    }
 }
 
-export function updateLanguage(Lang) {
-    if (translations[Lang]) {
-        polyglot.replace(translations[Lang]);
-        localStorage.setItem("language", Lang);
+
+export function getUserLang() {
+    return userLang;
+}
+
+// Actualizar textos e inputs dinámicos en la página
+export function updateLanguage(lang) {
+    if (translations[lang]) {
+        polyglot.replace(translations[lang]);
+
 
         document.querySelectorAll("[data-i18n]").forEach((el) => {
             const key = el.getAttribute("data-i18n");
-            el.textContent = polyglot.t(key);
-            el.innerHTML = polyglot.t(key).replace(/\n/g, "<br>"); // 🔹 Reemplaza \n por <br>
+            el.innerHTML = polyglot.t(key).replace(/\n/g, "<br>");
         });
+
 
         document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
             const key = el.getAttribute("data-i18n-placeholder");
             el.setAttribute("placeholder", polyglot.t(key));
         });
-
     }
-
 }
 
-// Exportar idioma actual
-export { polyglot, userLang };
 
-export function getUserLang() {
-    return userLang;
-}
+export { polyglot };
