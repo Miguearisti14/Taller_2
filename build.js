@@ -12,7 +12,7 @@ const { sassPlugin } = require('esbuild-sass-plugin');
 // Función para optimizar imágenes
 async function optimizeImages() {
     try {
-        await imagemin(['src/assets/images/*.{jpg,png,gif,svg}'], {
+        await imagemin(['docs/assets/images/*.{jpg,png,gif,svg}'], {
             destination: 'dist/assets/images',
             plugins: [
                 imageminMozjpeg({ quality: 80 }),
@@ -49,7 +49,7 @@ async function minifyHTML(sourcePath, destinationPath) {
 
 // Ejecutar esbuild con soporte para SASS
 esbuild.build({
-    entryPoints: ['src/scripts/main.js', 'src/styles/styles.scss', 'src/styles/dark.scss'],
+    entryPoints: ['docs/scripts/main.js', 'docs/styles/styles.scss', 'docs/styles/dark.scss'],
     bundle: true,
     minify: true,
     outdir: 'dist',
@@ -69,7 +69,7 @@ esbuild.build({
         copy({
             resolveFrom: 'cwd',
             assets: {
-                from: ['./src/assets/**/*'],
+                from: ['./docs/assets/**/*'],
                 to: ['./dist/assets']
             }
         })
@@ -79,7 +79,7 @@ esbuild.build({
     // Minificar archivos HTML
     const htmlFiles = ['index.html', 'formulario.html', 'login.html', 'signin.html'];
     htmlFiles.forEach(file => {
-        minifyHTML(`src/${file}`, `dist/${file}`);
+        minifyHTML(`docs/${file}`, `dist/${file}`);
     });
     return optimizeImages();
 
