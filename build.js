@@ -77,7 +77,7 @@ esbuild.build({
 }).then(() => {
     console.log('⚡ Build completo con soporte para SASS');
     // Minificar archivos HTML
-    const htmlFiles = ['index.html', 'formulario.html'];
+    const htmlFiles = ['index.html', 'formulario.html', 'login.html', 'signin.html'];
     htmlFiles.forEach(file => {
         minifyHTML(`src/${file}`, `dist/${file}`);
     });

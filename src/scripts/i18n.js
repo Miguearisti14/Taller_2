@@ -30,7 +30,15 @@ const translations = {
         CampoNombre: "Ingrese su Nombre",
         CampoCorreo: "Ingrese su Correo",
         CampoAsunto: "Ingrese su Asunto",
-        CampoMensaje: "Ingrese su Mensaje"
+        CampoMensaje: "Ingrese su Mensaje",
+        CerrarSesion: "Cerrar Sesión",
+        Registrarse: "Registrarse",
+        Usuario: "Usuario",
+        Contraseña: "Contraseña",
+        CampoContraseña: "Ingrese su contraseña",
+        CampoUsuario: "Ingrese su usuario",
+        IniciarSesion: "Iniciar Sesión"
+
 
     },
     en: {
@@ -62,7 +70,14 @@ const translations = {
         CampoNombre: "Enter your Name",
         CampoCorreo: "Enter your Email",
         CampoAsunto: "Enter your Affair",
-        CampoMensaje: "Enter your message"
+        CampoMensaje: "Enter your message",
+        CerrarSesion: "Log out",
+        Registrarse: "Sign in",
+        Usuario: "User",
+        Contraseña: "Password",
+        CampoContraseña: "Enter your password",
+        CampoUsuario: "Enter your user",
+        IniciarSesion: "Log in"
     }
 };
 

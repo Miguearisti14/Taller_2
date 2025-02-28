@@ -486,3 +486,79 @@ button {
         transform: scale(1.1);
     }
 }
+
+/* Inicio sesión */
+.inicio_sesion {
+    font-weight: bold;
+}
+
+.form-login {
+    top: 10%;
+    flex: 1;
+    padding-right: 20px;
+    font-family: "Ubuntu", serif;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #333;
+    border-radius: 4px;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #333;
+    border-radius: 4px;
+}
+
+textarea {
+    font-family: "Ubuntu", serif;
+    height: 80px;
+    resize: none;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #d4f1ee;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #b3e6e0;
+}
+
+.container-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    margin: auto;
+    margin-top: 15%;
+    margin-bottom: 5%;
+}
