@@ -3,30 +3,6 @@
 Este proyecto es una página web que incluye un slider de imágenes, una galería de imagenes, un formulario de contacto, un sistema de cambio de idioma, modo oscuro y un sistema de autenticación utilizando LocalStorage. Todo en un bundle de JavaScript que se maneja con **esbuild** para: Optimizar de recursos, minificar el código, ofuscar el código y preprocesar css. Todo montado en un servidor local http.
 
 
-
-## Estructura del Proyecto
-/src
-    /styles
-        styles.scss         // Estilos principales
-        dark.scss           // Estilos darkmode
-    /scripts
-        main.js            // Inicializador de la app
-        slider.js          // Controlador del slider de imágenes
-        navbar.js          // Manejo del navbar
-        form.js            // Validación y manejo del formulario
-        i18n.js            // Manejador de idiomas
-        darkmode.js        // Configuración y estado del modo oscuro
-        auth.js            // Registro y login con LocalStorage
-    /assets
-        /images   
-index.html                // html principal
-formulario.html           // Formulario html
-login.html                // html de inicio de sesión
-signin.html               // html de registro
-build.js                  // Configuración de esbuild
-README.md                 // Este archivo
-
-
 ## Configuración y Uso
 
 ### 1. Instalar dependencias
